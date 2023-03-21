@@ -23,12 +23,6 @@ content: |-
   - {{ .GetMode }}.{{ .Spec }} ({{ .Position.Filename }}#{{ .Position.Line }})
   {{- end }}
 
-  # Examples
-    ### Complete
-    ```hcl
-    {{ include "examples/complete/main.tf" }}
-    ```
-
 output:
   file: "README.md"
   mode: inject
