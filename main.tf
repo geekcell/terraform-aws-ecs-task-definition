@@ -100,7 +100,8 @@ resource "aws_ecs_task_definition" "main" {
 module "iam_role_ecs_exec" {
   count = var.create_execution_role ? 1 : 0
 
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = coalesce(var.execution_role_name, "${var.name}-ecs-exec")
   use_name_prefix = var.execution_role_name_prefix
@@ -119,7 +120,8 @@ resource "aws_iam_role_policy_attachment" "execute_additional" {
 module "iam_role_ecs_task" {
   count = var.create_task_role ? 1 : 0
 
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = coalesce(var.task_role_name, "${var.name}-ecs-task")
   use_name_prefix = var.task_role_name_prefix
